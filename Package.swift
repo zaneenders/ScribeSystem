@@ -13,6 +13,7 @@ let swiftSettings: [SwiftSetting] = [
         "-warn-concurrency", "-enable-actor-data-race-checks",
     ]),
 ]
+
 let package = Package(
     name: "ScribeSystem",
     products: [
@@ -34,7 +35,9 @@ let package = Package(
                 .product(name: "NIOPosix", package: "swift-nio"),
                 .product(name: "NIOHTTP1", package: "swift-nio"),
             ],
-            exclude: ["README.md"],
-            swiftSettings: swiftSettings),
+            exclude: ["README.md"]
+            // Swift 6 settings disabled for for tagged release.
+            // ,swiftSettings: swiftSettings
+        ),
     ]
 )
