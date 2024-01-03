@@ -57,7 +57,7 @@ let package = Package(
                 ]
             ),
             dependencies: [
-                "Files"
+                .target(name: "Files")
             ]
         ),
     ]

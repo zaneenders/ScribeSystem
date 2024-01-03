@@ -124,9 +124,10 @@ extension System {
     public static func which(program name: String) async throws -> String? {
         return try await Task {
             let task = Process()
-            let pipe = Pipe()
-            task.standardOutput = pipe
-            task.standardError = pipe
+            let inPipe = Pipe()
+            let outPipe = Pipe()
+            task.standardOutput = outPipe
+            task.standardError = inPipe
             task.arguments = [name]
             // Does this break on Windows or MacOS?
             task.executableURL = URL(fileURLWithPath: "/usr/bin/which")
@@ -135,10 +136,13 @@ extension System {
             try task.run()
             task.waitUntilExit()
 
+            /*
             let data: Data = pipe.fileHandleForReading.readDataToEndOfFile()
             var path = String(data: data, encoding: .utf8)
             path?.removeLast()  // Removes extra newline character
             return path
+            */
+            return ""
         }.value
     }
 }
