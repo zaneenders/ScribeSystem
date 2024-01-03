@@ -19,7 +19,11 @@ let package = Package(
     products: [
         .library(
             name: "ScribeSystem",
-            targets: ["ScribeSystem"])
+            targets: ["ScribeSystem"]),
+        .plugin(
+            name: "FilesPlugin",
+            targets: ["FilesPlugin"]
+        ),
     ],
     dependencies: [
         .package(
@@ -38,6 +42,23 @@ let package = Package(
             exclude: ["README.md"]
             // Swift 6 settings disabled for for tagged release.
             // ,swiftSettings: swiftSettings
+        ),
+        .executableTarget(name: "Files", dependencies: ["ScribeSystem"]),
+        // Plugins
+        .plugin(
+            name: "FilesPlugin",
+            capability: .command(
+                intent: .custom(
+                    verb: "files",
+                    description: "changing files"),
+                permissions: [
+                    .writeToPackageDirectory(
+                        reason: "changes files")
+                ]
+            ),
+            dependencies: [
+                "Files"
+            ]
         ),
     ]
 )
