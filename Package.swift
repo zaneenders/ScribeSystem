@@ -16,6 +16,10 @@ let swiftSettings: [SwiftSetting] = [
 
 let package = Package(
     name: "ScribeSystem",
+    platforms: [
+        .macOS("14.0"), .iOS("16.0"), .watchOS("9.0"), .tvOS("16.0"),
+        .visionOS("1.0"),
+    ],
     products: [
         .library(
             name: "ScribeSystem",
