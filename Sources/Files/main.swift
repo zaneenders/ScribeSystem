@@ -1,7 +1,7 @@
 import RegexBuilder
 import ScribeSystem
 
-let publicPath = System.scribePath // + "/Packages/Public"
+let publicPath = System.scribePath  // + "/Packages/Public"
 print(publicPath)
 
 guard let sub = try FileSystem.subpaths(atPath: publicPath) else {
@@ -50,4 +50,3 @@ async let group = await withTaskGroup(of: Void.self) {
 await group
 
 print("Files processed: \(f.count)")
-
