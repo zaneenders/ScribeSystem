@@ -24,6 +24,7 @@ let nioPie = NIOPipeBootstrap(group: MultiThreadedEventLoopGroup.singleton)
     }
     .takingOwnershipOfDescriptors(input: stdIN, output: STDOUT_FILENO)
 
+// See ReadME.md
 public func idk() {
     // This works
     // enableRawMode()
