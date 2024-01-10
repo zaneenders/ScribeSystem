@@ -24,6 +24,9 @@ public func httpServer(_ httpDocsDir: String = "/dev/null/") throws {
     var allowHalfClosure = true
     let defaultHost = "::1"
     let defaultPort = 8080
+    print(httpDocsDir)
+    print(defaultHost)
+    print(defaultPort)
 
     // TODO do I need this?
     func childChannelInitializer(channel: (any Channel)) -> EventLoopFuture<
